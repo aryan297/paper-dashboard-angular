@@ -12,7 +12,12 @@ declare interface TableData {
 })
 
 export class TableComponent implements OnInit{
-    public tableData1: TableData;
+ ColumnDefs: any;  
+ RowData: any;  
+ IsColumnsToFit: boolean;  
+ gridApi: any;  
+ gridColumnApi: any;  
+ /*    public tableData1: TableData;
     public tableData2: TableData;
     ngOnInit(){
         this.tableData1 = {
@@ -37,5 +42,105 @@ export class TableComponent implements OnInit{
                 ['6', 'Mason Porter', '$78,615', 'Chile', 'Gloucester' ]
             ]
         };
+    } */
+ 
+    AgLoad: boolean;  
+    constructor() { }  
+    
+    ngOnInit() {  
+
+      
+      this.GetAgColumns();  
+      this.GetGiftVoucherList();  
+      
+    }  
+    GetAgColumns() {  
+      this.ColumnDefs = [  
+        { headerName: 'ArtNo', field: 'ArtNo', sortable: true, filter: true },  
+        { headerName: 'Provider', field: 'Provider', sortable: true, filter: true },  
+        { headerName: 'ProviderArtNo', field: 'ProviderArtNo', sortable: true, filter: true },  
+        { headerName: 'Brand', field: 'Brand', sortable: true, filter: true },  
+        { headerName: 'Price', field: 'Price', sortable: true, filter: true },  
+        { headerName: 'BuyAccount', field: 'BuyAccount', sortable: true, filter: true }  
+      ];  
+    }  
+    GetGiftVoucherList() {  
+      this.AgLoad = true;  
+      this.RowData = [  
+        {  
+          ArtNo: "100",  
+          Provider: "IPhone 11",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Apple",  
+          Price: 7810.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "101",  
+          Provider: "Samsung galaxy",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Samsung",  
+          Price: 2310.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "102",  
+          Provider: "Iphone 11 Pro",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Apple",  
+          Price: 7810.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "103",  
+          Provider: "Intex",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Intex",  
+          Price: 5810.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "100",  
+          Provider: "IPhone 11",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Apple",  
+          Price: 7810.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "101",  
+          Provider: "Samsung galaxy",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Samsung",  
+          Price: 2310.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "102",  
+          Provider: "Iphone 11 Pro",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Apple",  
+          Price: 7810.23,  
+          BuyAccount: "123",  
+        },  
+        {  
+          ArtNo: "103",  
+          Provider: "Intex",  
+          ProviderArtNo: "1Yu",  
+          Brand: "Intex",  
+          Price: 5810.23,  
+          BuyAccount: "123",  
+        }  
+      ];  
+    }  
+    
+
+        BindData(params) {  
+        this.gridApi = params.api;  
+        this.gridColumnApi = params.columnApi;  
+        params.api.setRowData(this.RowData);  
+        if (this.IsColumnsToFit) {  
+          this.gridApi.sizeColumnsToFit();  
+        } 
     }
 }

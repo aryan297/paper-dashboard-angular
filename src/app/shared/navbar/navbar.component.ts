@@ -3,6 +3,7 @@ import { ROUTES } from '../../sidebar/sidebar.component';
 import { Router } from '@angular/router';
 import { Location} from '@angular/common';
 
+
 @Component({
     moduleId: module.id,
     selector: 'navbar-cmp',
@@ -90,6 +91,10 @@ export class NavbarComponent implements OnInit{
           navbar.classList.remove('bg-white');
         }
 
+      }
+
+      logout(){
+       this.router.navigate(['/login']); 
       }
 
 }
