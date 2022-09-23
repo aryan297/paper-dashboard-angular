@@ -16,6 +16,29 @@ import { UpgradeComponent }         from '../../pages/upgrade/upgrade.component'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatNativeDateModule,
+  NgxMatTimepickerModule
+} from '@angular-material-components/datetime-picker';
+import { NgxDatetimeRangePickerModule } from 'ngx-datetime-range-picker';
+import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-datetimepicker';
+import {MatIconModule} from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
+
+
 
 @NgModule({
   imports: [
@@ -23,7 +46,27 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    MatStepperModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    NgxMatDatetimePickerModule,
+    MatButtonModule,
+    NgxMatTimepickerModule,
+    MatIconModule,
+    DlDateTimeDateModule,  // <--- Determines the data type of the model
+    DlDateTimePickerModule,
+    NgxMatNativeDateModule,
+    NgxDatetimeRangePickerModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   declarations: [
     DashboardComponent,

@@ -17,6 +17,12 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from "./login/login.component";
 import { AgGridModule } from 'ag-grid-angular';
 import {FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angular-datetime-picker';
+
+import { BrowserModule } from "@angular/platform-browser";
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatIconModule} from '@angular/material/icon';
+
 
 
 @NgModule({
@@ -26,6 +32,7 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: true
@@ -38,6 +45,10 @@ import {FormsModule, ReactiveFormsModule } from '@angular/forms';
     FixedPluginModule,
     AgGridModule,
     FormsModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
+    MatIconModule,
+    MatSlideToggleModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the application is stable

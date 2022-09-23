@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Ubuntu:wght@300;400;500;700&display=swap');
+/* @import url('https://fonts.googleapis.com/css?family=Ubuntu:wght@300;400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -121,3 +121,46 @@ body {
 .icon:hover {
     opacity: 0.7;
 }
+ */
+ 
+ 
+ .main{
+     display: flex;
+     background: none;
+     justify-content: space-around;
+
+
+     .card{
+         width: 240px;
+         margin-bottom: 10px;
+     }
+ }
+ select{
+    height: 40px;
+    border: 3px black;
+}
+mat-slider {
+    width: 300px;
+
+    color: lightpink;
+  }
+
+::ng-deep .mat-accent .mat-slider-thumb, .mat-accent .mat-slider-thumb-label, .mat-accent .mat-slider-track-fill {
+    background-color: darkgrey;
+}
+::ng-deep .mat-accent .mat-slider-thumb {
+    background-color: black;
+} 
+::ng-deep .mat-accent .mat-slider-thumb-label {
+    background-color: black;
+} 
+::ng-deep .mat-accent .mat-slider-track-fill {
+    background-color: black;
+} 
+
+::ng-deep .mat-slider-horizontal .mat-slider-track-background {
+    background-color: grey; 
+
+}
+
+ 

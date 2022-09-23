@@ -1,0 +1,135 @@
+
+    <div class="card card-user">
+      <div class="card-header">
+        <h5 class="card-title">Create Event</h5>
+      </div>
+      <div class="card-body">
+        <form>
+          <div class="row">
+            <div class="col-md-5 pr-1">
+              <div class="form-group">
+                <label>Select Event Goal</label>
+                <input type="text" class="form-control"  placeholder="Company" value="Creative Code Inc.">
+              </div>
+            </div>
+             <div class="col-md-5 pl-1">
+              <div class="form-group">
+                <label>Select Store</label>
+                <input type="text" class="form-control" placeholder="Store Name" value="michael23">
+              </div>
+            </div>
+          </div>
+            <div class="form-group" >
+          <div class="col-md-4 pl-1">
+            <label for="exampleInputEmail1">Select Success Matrix</label>
+<!--           <input type="email" class="form-control" placeholder="Success Matrix"> -->
+<div class="form-group">
+<select>
+    <optgroup>
+      <option>#Downloads</option>
+      <option>#Orders</option>
+      <option>#retention</option>
+    </optgroup>
+  </select>
+  </div>
+  <div>
+    <label for="exampleInputEmail1">Budget</label>
+    <mat-slider
+    thumbLabel
+    [displayWith]="formatLabel"
+    tickInterval="1000"
+    step="1000"
+    min="0"
+    max="100000"
+    aria-label="units"></mat-slider>
+  </div>
+  
+          </div>
+          </div>
+  <!--         <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+            </div>
+          </div> -->
+        </form>
+      </div>
+    </div>
+
+
+
+
+
+<div class="main">
+<div class="card" >
+
+      <div class="card-body">
+        <div>
+            <img src="https://dummyimage.com/230x150/423b42/fff">
+          </div>
+
+        <p>Kabadi pratiyogita</p>
+        <p>Estimated Reach :1500</p>
+        <p>Budget :2000</p>
+
+        <div class="row">
+            <div class="update ml-auto mr-auto">
+              <button type="submit" (click)="save()"class="btn btn-primary btn-round">Save</button>
+            </div>
+          </div>
+        
+    
+      </div>
+        
+</div>
+
+<div class="card" >
+
+    <div class="card-body">
+      <div>
+          <img src="https://dummyimage.com/230x150/423b42/fff">
+        </div>
+
+      <p>Kabadi pratiyogita</p>
+      <p>Estimated Reach :1500</p>
+      <p>Budget :2000</p>
+
+      <div class="row">
+          <div class="update ml-auto mr-auto">
+            <button type="submit" (click)="save()"class="btn btn-primary btn-round">Save</button>
+          </div>
+        </div>
+      
+  
+    </div>
+      
+</div>
+<div class="card" >
+
+    <div class="card-body">
+        <div>
+            <img src="https://dummyimage.com/230x150/423b42/fff">
+          </div>
+
+      <p>Kabadi pratiyogita</p>
+       
+  
+    </div>
+      
+</div>
+
+<div class="card" >
+
+    <div class="card-body">
+        <div>
+            <img src="https://dummyimage.com/230x150/423b42/fff">
+          </div>
+
+      <p>Kabadi pratiyogita</p>
+       
+  
+    </div>
+      
+</div>
+
+
+</div>
