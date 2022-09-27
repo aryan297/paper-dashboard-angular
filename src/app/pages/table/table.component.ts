@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
+import { IDropdownSettings } from 'ng-multiselect-dropdown';
 
+import { FormControl,FormGroup,Validators,FormBuilder } from '@angular/forms'
 declare interface TableData {
     headerRow: string[];
     dataRows: string[][];
@@ -18,48 +20,58 @@ export class TableComponent implements OnInit{
  RowData: any;  
  IsColumnsToFit: boolean;  
  gridApi: any;  
- gridColumnApi: any;  
- /*    public tableData1: TableData;
-    public tableData2: TableData;
-    ngOnInit(){
-        this.tableData1 = {
-            headerRow: [ 'ID', 'Name', 'Country', 'City', 'Salary'],
-            dataRows: [
-                ['1', 'Dakota Rice', 'Niger', 'Oud-Turnhout', '$36,738'],
-                ['2', 'Minerva Hooper', 'Curaçao', 'Sinaai-Waas', '$23,789'],
-                ['3', 'Sage Rodriguez', 'Netherlands', 'Baileux', '$56,142'],
-                ['4', 'Philip Chaney', 'Korea, South', 'Overland Park', '$38,735'],
-                ['5', 'Doris Greene', 'Malawi', 'Feldkirchen in Kärnten', '$63,542'],
-                ['6', 'Mason Porter', 'Chile', 'Gloucester', '$78,615']
-            ]
-        };
-        this.tableData2 = {
-            headerRow: [ 'ID', 'Name',  'Salary', 'Country', 'City' ],
-            dataRows: [
-                ['1', 'Dakota Rice','$36,738', 'Niger', 'Oud-Turnhout' ],
-                ['2', 'Minerva Hooper', '$23,789', 'Curaçao', 'Sinaai-Waas'],
-                ['3', 'Sage Rodriguez', '$56,142', 'Netherlands', 'Baileux' ],
-                ['4', 'Philip Chaney', '$38,735', 'Korea, South', 'Overland Park' ],
-                ['5', 'Doris Greene', '$63,542', 'Malawi', 'Feldkirchen in Kärnten', ],
-                ['6', 'Mason Porter', '$78,615', 'Chile', 'Gloucester' ]
-            ]
-        };
-    } */
-    constructor(private route:Router) { }  
+ Form: FormGroup;
+ gridColumnApi: any; 
+ data=[] 
+ dropdownList=[]
+ dropdownSettings:IDropdownSettings= {};
+ selectedItems=[]
+    constructor(private route:Router,private formBuilder: FormBuilder) { 
+
+    }  
     
     ngOnInit() { 
+        this.Form = this.formBuilder.group({
+            event_goal_id:[''],
+            store_id:[''],
+            event_metrics:[''],
+            event_model_id:['']
+        })
+        this.dropdownList = [
+            { item_id: 1, item_text: 'Rahul',value:3000 },
+            { item_id: 2, item_text: 'Rajan' ,value:8000},
+            { item_id: 3, item_text: 'Javed' ,value:90000},
+            { item_id: 4, item_text: 'Saurav' ,value:70000},
+            { item_id: 5, item_text: 'Raj' ,value:3000 },
+            { item_id: 7, item_text: 'Javed' ,value:90000},
+            { item_id: 9, item_text: 'Saurav' ,value:71000},
+            { item_id: 10, item_text: 'Raj' ,value:3000 }
+          ];
+          this.data=this.dropdownList
+          console.log(this.data.length);
+          this.dropdownSettings = {
+            singleSelection: false,
+            idField: 'item_id',
+            textField: 'item_text',
+            selectAllText: 'Select All',
+            unSelectAllText: 'UnSelect All',
+            itemsShowLimit: 5,
+            allowSearchFilter: true
+          };
       
     }  
 
-    formatLabel(value: number) {
-      if (value >= 1000) {
-        return Math.round(value / 1000) + 'k';
-      }
-  
-      return value;
+    formatLabel(event) {
+        this.data=this.dropdownList.filter(res=>JSON.parse(res.value) < event.value)
+     if(this.data.length===0){
+         this.data=this.dropdownList
+     }
+     return this.data;
     }
 
     save(){
+        console.log(this.Form.value);
+        
       this.route.navigate(['/create'])
 
     }

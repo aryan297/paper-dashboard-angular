@@ -217,49 +217,6 @@
   </div>
     <mat-step [stepControl]="secondFormGroup" label="Enter the Second Step">
       <form [formGroup]="secondFormGroup">
-
-        <div class="row">
-          <div class="col-md-5 pr-1">
-            <div class="form-group">
-              <label>Event Prize</label>
-              <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
-            </div>
-          </div>
-          <div class="col-md-3 px-1">
-            <div class="form-group">
-              <label>Who</label>
-              <input type="text" class="form-control" placeholder="Username" value="michael23">
-            </div>
-          </div>
-          <div class="col-md-4 pl-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Limit</label>
-              <input type="number" class="form-control" placeholder="Email">
-            </div>
-          </div>
-        </div>
-
-
-        <div class="row">
-          <div class="col-md-5 pr-1">
-            <div class="form-group">
-              <label>Event Prize</label>
-              <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
-            </div>
-          </div>
-          <div class="col-md-3 px-1">
-            <div class="form-group">
-              <label>Who</label>
-              <input type="text" class="form-control" placeholder="Username" value="michael23">
-            </div>
-          </div>
-          <div class="col-md-4 pl-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Limit</label>
-              <input type="number" class="form-control" placeholder="Email">
-            </div>
-          </div>
-        </div>
         <div>
           <button mat-button matStepperPrevious>Back</button>
           <button mat-button matStepperNext>Next</button>
@@ -267,54 +224,212 @@
       </form>
     </mat-step>
     <mat-step>
+<form [formGroup]="thirdFormGroup" >
 
-        <div class="row">
-          <div class="col-md-5 pr-1">
-            <div class="form-group">
-              <label>Event Prize</label>
-              <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+
+  <div class="row">
+    <div class="col-md-5 pr-1">
+      <div class="form-group">
+        <label>Event Prize</label>
+        <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+      </div>
+    </div>
+    <div class="col-md-3 px-1">
+      <div class="form-group">
+        <label>Who</label>
+        <input type="text" class="form-control" placeholder="Username" value="michael23">
+      </div>
+    </div>
+    <div class="col-md-4 pl-1">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Limit</label>
+        <input type="number" class="form-control" placeholder="Email">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-5 pr-1">
+      <div class="form-group">
+        <label>Event Prize</label>
+        <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+      </div>
+    </div>
+    <div class="col-md-3 px-1">
+      <div class="form-group">
+        <label>Who</label>
+        <input type="text" class="form-control" placeholder="Username" value="michael23">
+      </div>
+    </div>
+    <div class="col-md-4 pl-1">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Limit</label>
+        <input type="number" class="form-control" placeholder="Email">
+      </div>
+    </div>
+  </div>
+
+      <div class="form-group row" formArrayName="options">
+        <label for="inputEmail1" class="label col-sm-2 col-form-label"
+          >Event Timeline</label
+        >
+
+        <div class="col-sm-9">
+          <div
+            *ngFor="let quantity of options().controls; let stepIndex = index"
+          >
+            <div [formGroupName]="stepIndex" class="navigation">
+              <div>
+                <label>Start date</label>
+                <mat-form-field  class="form-group">
+                  <input matInput [ngxMatDatetimePicker]="picker"  placeholder="Choose a date & time" formControlName='start_at'>
+                  
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              
+                  <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+              </mat-form-field>
+              </div>
+          
+              <div>
+                <label>End date</label>
+                <mat-form-field  class="form-group">
+                  <input matInput [ngxMatDatetimePicker]="picker1" placeholder="Choose a date & time" formControlName='end_at'>
+                  
+                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+              
+                  <ngx-mat-datetime-picker #picker1></ngx-mat-datetime-picker>
+              </mat-form-field>
+              </div>
+          
+            <mat-form-field>
+
+              <input
+              matInput
+                type="text"
+                formControlName="location"
+                placeholder="location {{ stepIndex + 1 }}"
+              
+              />
+              </mat-form-field>
+              <mat-form-field>
+              <input
+              matInput
+                type="text"
+                formControlName="title"
+                placeholder="title {{ stepIndex + 1 }}"
+              
+              />
+            </mat-form-field>
+              <mat-icon
+                (click)="removeQuantity(stepIndex)"
+                class="icons"
+                >delete_forever</mat-icon
+              >
             </div>
-          </div>
-          <div class="col-md-3 px-1">
-            <div class="form-group">
-              <label>Who</label>
-              <input type="text" class="form-control" placeholder="Username" value="michael23">
-            </div>
-          </div>
-          <div class="col-md-4 pl-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Limit</label>
-              <input type="number" class="form-control" placeholder="Email">
-            </div>
+            <br />
           </div>
         </div>
+      </div>
+    </form>
+
+      <button
+      type="submit"
+      (click)="addQuantity()"
+      mat-button
+      status="primary"
+    >
+      Add Options</button>
 
 
-        <div class="row">
-          <div class="col-md-5 pr-1">
-            <div class="form-group">
-              <label>Event Prize</label>
-              <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
-            </div>
-          </div>
-          <div class="col-md-3 px-1">
-            <div class="form-group">
-              <label>Who</label>
-              <input type="text" class="form-control" placeholder="Username" value="michael23">
-            </div>
-          </div>
-          <div class="col-md-4 pl-1">
-            <div class="form-group">
-              <label for="exampleInputEmail1">Limit</label>
-              <input type="number" class="form-control" placeholder="Email">
-            </div>
-          </div>
-        </div>
-      <ng-template matStepLabel>Done</ng-template>
+     
+      <ng-template matStepLabel>Enter the third Step</ng-template>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
     </mat-step>
+
+    <mat-step>
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 pr-1">
+              <div class="form-group">
+                <label>Marketing Channels</label>
+                <mat-form-field>
+                <input matInput type="text"  placeholder="Channels" >
+                </mat-form-field>
+              </div>
+            </div>
+      
+      
+          <div class="col-md-6 pr-1">
+            <label>Marketing Creatives</label>
+              <mat-form-field>
+                <div>
+                  <mat-toolbar>
+                    <!-- Display files names -->
+                    <input matInput [(ngModel)]="fileAttr" style="visibility:hidden;" readonly name="name" />
+                    <!-- Browse Button -->
+                    <button mat-flat-button color="primary" >Browse File</button>
+                  </mat-toolbar>
+                  <input
+                    type="file"
+                    #fileInput
+                    id="uploadFile"
+                    (change)="uploadFileEvt($event)"
+                    name="uploadFile"
+                    multiple="multiple"
+                    accept="image/*"
+                  />
+                </div>
+              </mat-form-field>
+              </div>
+          </div>
+      
+          <div >
+            <div>
+              <div>
+                <label>Template Id</label>
+                <mat-form-field>
+                <input matInput type="number"  placeholder="Template Id" >
+              </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <div>
+            <label>Campaign Start date</label>
+            <mat-form-field>
+              <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" [(ngModel)]="test">
+              
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          
+              <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+          </mat-form-field>
+          </div>
+      
+      
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label>Description</label>
+                <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      </div>
+
+      
+
+   
+    <ng-template matStepLabel>Done</ng-template>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
   </mat-stepper> 
   </div>

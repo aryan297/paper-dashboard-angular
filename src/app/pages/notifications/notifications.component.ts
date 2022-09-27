@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from "ngx-toastr";
 
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import * as moment from 'moment';
 import { IDropdownSettings } from 'ng-multiselect-dropdown';
 import { NgbCalendar, NgbDate, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
@@ -17,9 +17,11 @@ const year = today.getFullYear();
 })
 
 export class NotificationsComponent implements OnInit{
-
+  @ViewChild('fileInput') fileInput: ElementRef;
   firstFormGroup:FormGroup
   secondFormGroup:FormGroup
+  thirdFormGroup:FormGroup
+  fourthFormGroup:FormGroup
   isLinear = false;
   test='';
   test1=''
@@ -28,6 +30,7 @@ export class NotificationsComponent implements OnInit{
   selectedItems = [];
 
   selectedDate=''
+  fileAttr = 'Choose File';
   hoveredDate: NgbDate | null = null;
 
   fromDate: NgbDate | null;
@@ -55,6 +58,9 @@ export class NotificationsComponent implements OnInit{
     this.secondFormGroup = this._formBuilder.group({
       secondCtrl: ['', Validators.required],
     });
+    this.thirdFormGroup = this._formBuilder.group({
+      options:this._formBuilder.array([])
+    })
   }
   ngOnInit(): void {
     this.dropdownList = [
@@ -199,14 +205,44 @@ export class NotificationsComponent implements OnInit{
         break;
     }
   }
-
-  onItemSelect(event){
-
+  uploadFileEvt(imgFile: any) {
+    if (imgFile.target.files && imgFile.target.files[0]) {
+      this.fileAttr = '';
+      Array.from(imgFile.target.files).forEach((file: any) => {
+        this.fileAttr += file.name + ' - ';
+      });
+      // HTML5 FileReader API
+      let reader = new FileReader();
+      reader.onload = (e: any) => {
+        let image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs) => {
+          let imgBase64Path = e.target.result;
+        };
+      };
+      reader.readAsDataURL(imgFile.target.files[0]);
+      // Reset if duplicate image uploaded again
+      this.fileInput.nativeElement.value = '';
+    } else {
+      this.fileAttr = '';
+    }
   }
-  onSelectAll(event){
 
+  options(): FormArray {
+    return this.thirdFormGroup.get("options") as FormArray;
   }
-  onFilterChange(event){
-
+  newOptions(): FormGroup {
+    return this._formBuilder.group({
+      start_at: "",
+      end_at: "",
+      location:"",
+      title:''
+    });
+  }
+  addQuantity() {
+    this.options().push(this.newOptions());
+  }
+  removeQuantity(id){
+    this.options().removeAt(id);
   }
 }

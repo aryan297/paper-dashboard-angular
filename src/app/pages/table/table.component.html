@@ -4,19 +4,26 @@
         <h5 class="card-title">Create Event</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form [formGroup]="Form">
           <div class="row">
             <div class="col-md-5 pr-1">
               <div class="form-group">
                 <label>Select Event Goal</label>
-                <input type="text" class="form-control"  placeholder="Company" value="Creative Code Inc.">
+                <input type="text" class="form-control"  placeholder="Company" formControlName="event_goal_id"  value="Creative Code Inc.">
               </div>
             </div>
              <div class="col-md-5 pl-1">
               <div class="form-group">
-                <label>Select Store</label>
-                <input type="text" class="form-control" placeholder="Store Name" value="michael23">
-              </div>
+                <label>Select store</label>
+                <ng-multiselect-dropdown  style="width: 80%; height: 200px; background-color: #f7f9fc;
+                border-color: #e4e9f2;
+                color: #222b45; margin-left: 260px;"
+                 [placeholder]="'Select Store'"
+                  [settings]="dropdownSettings"
+                  formControlName="store_id"
+                 [data]="dropdownList" >
+             </ng-multiselect-dropdown> 
+                  </div>
             </div>
           </div>
             <div class="form-group" >
@@ -24,7 +31,7 @@
             <label for="exampleInputEmail1">Select Success Matrix</label>
 <!--           <input type="email" class="form-control" placeholder="Success Matrix"> -->
 <div class="form-group">
-<select>
+<select formControlName="event_metrics">
     <optgroup>
       <option>#Downloads</option>
       <option>#Orders</option>
@@ -36,7 +43,7 @@
     <label for="exampleInputEmail1">Budget</label>
     <mat-slider
     thumbLabel
-    [displayWith]="formatLabel"
+    (change)="formatLabel($event)"
     tickInterval="1000"
     step="1000"
     min="0"
@@ -55,81 +62,31 @@
       </div>
     </div>
 
+    <div style="display: flex; justify-content:space-between">
+    <h3>Select template or create a new template from scratch</h3>
+    <div class="update ml-auto mr-auto">
+      <button type="submit" class="btn btn-primary btn-round">Create new Template</button>
+    </div>
+    </div>
 
-
-
-
-<div class="main">
-<div class="card" >
-
-      <div class="card-body">
-        <div>
+    <div >   
+      <div class="container"> 
+          <div class="row">
+              <div class="card col-md-4" *ngFor="let dat of data">
+                  <div class="card-block">
+                          
+     
             <img src="https://dummyimage.com/230x150/423b42/fff">
-          </div>
+   
 
-        <p>Kabadi pratiyogita</p>
-        <p>Estimated Reach :1500</p>
-        <p>Budget :2000</p>
-
-        <div class="row">
-            <div class="update ml-auto mr-auto">
-              <button type="submit" (click)="save()"class="btn btn-primary btn-round">Save</button>
-            </div>
-          </div>
-        
+            <p>{{dat.item_text}}</p>
+            <p>{{dat.value}}</p>
     
-      </div>
         
-</div>
-
-<div class="card" >
-
-    <div class="card-body">
-      <div>
-          <img src="https://dummyimage.com/230x150/423b42/fff">
-        </div>
-
-      <p>Kabadi pratiyogita</p>
-      <p>Estimated Reach :1500</p>
-      <p>Budget :2000</p>
-
-      <div class="row">
-          <div class="update ml-auto mr-auto">
-            <button type="submit" (click)="save()"class="btn btn-primary btn-round">Save</button>
+                  <button type="submit" (click)="save(dat.item_id)"class="btn btn-primary btn-round">Save</button>
+                  </div>
+              </div>
           </div>
-        </div>
-      
-  
-    </div>
-      
-</div>
-<div class="card" >
-
-    <div class="card-body">
-        <div>
-            <img src="https://dummyimage.com/230x150/423b42/fff">
-          </div>
-
-      <p>Kabadi pratiyogita</p>
-       
-  
-    </div>
-      
-</div>
-
-<div class="card" >
-
-    <div class="card-body">
-        <div>
-            <img src="https://dummyimage.com/230x150/423b42/fff">
-          </div>
-
-      <p>Kabadi pratiyogita</p>
-       
-  
-    </div>
-      
-</div>
-
+      </div>
 
 </div>

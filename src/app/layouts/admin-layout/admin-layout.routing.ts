@@ -12,7 +12,7 @@ import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user',           component: UserComponent },
-    { path: 'table',          component: TableComponent },
+    { path: 'template',          component: TableComponent },
     { path: 'typography',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'event',           component: MapsComponent },

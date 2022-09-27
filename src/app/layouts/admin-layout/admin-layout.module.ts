@@ -36,6 +36,7 @@ import { DlDateTimeDateModule, DlDateTimePickerModule } from 'angular-bootstrap-
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 
@@ -65,6 +66,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
     NgxMatNativeDateModule,
+    MatToolbarModule,
     NgxDatetimeRangePickerModule,
     NgMultiSelectDropDownModule.forRoot(),
   ],

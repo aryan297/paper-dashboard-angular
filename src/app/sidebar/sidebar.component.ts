@@ -11,11 +11,12 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
     { path: '/dashboard',     title: 'Dashboard',         icon:'nc-bank',       class: '' },
     { path: '/icons',         title: 'Goal Setting',      icon:'nc-diamond',    class: '' },
-    { path: '/event',         title: 'Create Event',      icon:'nc-pin-3',      class: '' },
-    { path: '/create',        title: 'create',                   icon:'nc-bell-55',    class: '' },
+    { path: '/event',         title: 'Event List',      icon:'nc-pin-3',      class: '' },
+    { path: '/create',        title: 'Create Event',                   icon:'nc-bell-55',    class: '' },
     { path: '/user',          title: 'User Profile',      icon:'nc-single-02',  class: '' },
-    { path: '/table',         title: 'Table List',        icon:'nc-tile-56',    class: '' },
-    { path: '/typography',    title: 'Typography',        icon:'nc-caps-small', class: '' },
+    { path: '/template',      title: 'template List',        icon:'nc-tile-56',    class: '' },
+    { path: '/typography',    title: 'Event Template',        icon:'nc-caps-small', class: '' },
+    { path:  '/upgrade' ,     title:'upgrade',            icon :'nc-caps-small', class:''}
 ];
 
 @Component({
