@@ -12,7 +12,7 @@ export const AppRoutes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'event',
     pathMatch: 'full',
   }, {
     path: '',
@@ -24,6 +24,6 @@ export const AppRoutes: Routes = [
   }]},
   {
     path: '**',
-    redirectTo: 'dashboard'
+    redirectTo: 'event'
   }
 ]

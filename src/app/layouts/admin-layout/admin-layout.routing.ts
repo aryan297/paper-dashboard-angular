@@ -13,7 +13,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user',           component: UserComponent },
     { path: 'template',          component: TableComponent },
-    { path: 'typography',     component: TypographyComponent },
+    { path: 'createTemplate',     component: TypographyComponent },
     { path: 'icons',          component: IconsComponent },
     { path: 'event',           component: MapsComponent },
     { path: 'create',  component: NotificationsComponent },

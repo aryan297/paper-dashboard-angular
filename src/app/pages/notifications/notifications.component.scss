@@ -1,3 +1,8 @@
+
+.card{
+  margin: 5px;
+}
+
 ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
   background-color: lightgray;
 }
@@ -36,4 +41,7 @@ label{
   color: #000;
   font-size: 16px;
   margin-right: 10px;
+}
+.icons{
+  color: red;
 }

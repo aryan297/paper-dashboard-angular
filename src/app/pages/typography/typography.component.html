@@ -1,122 +1,58 @@
-<!-- <div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <h5 class="title">Paper Table Heading</h5>
-        <p class="category">Created using Montserrat Font Family</p>
-      </div>
-      <div class="card-body">
-        <div class="typography-line">
-          <h1>
-            <span>Header 1</span>The Life of Paper Dashboard </h1>
-        </div>
-        <div class="typography-line">
-          <h2>
-            <span>Header 2</span>The Life of Paper Dashboard </h2>
-        </div>
-        <div class="typography-line">
-          <h3>
-            <span>Header 3</span>The Life of Paper Dashboard </h3>
-        </div>
-        <div class="typography-line">
-          <h4>
-            <span>Header 4</span>The Life of Paper Dashboard </h4>
-        </div>
-        <div class="typography-line">
-          <h5>
-            <span>Header 5</span>The Life of Paper Dashboard </h5>
-        </div>
-        <div class="typography-line">
-          <h6>
-            <span>Header 6</span>The Life of Paper Dashboard </h6>
-        </div>
-        <div class="typography-line">
-          <p>
-            <span>Paragraph</span>
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-          </p>
-        </div>
-        <div class="typography-line">
-          <span>Quote</span>
-          <blockquote>
-            <p class="blockquote blockquote-primary">
-              "I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at."
-              <br>
-              <br>
-              <small>
-                - Noaa
-              </small>
-            </p>
-          </blockquote>
-        </div>
-        <div class="typography-line">
-          <span>Muted Text</span>
-          <p class="text-muted">
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-          </p>
-        </div>
-        <div class="typography-line">
-          <span>Primary Text</span>
-          <p class="text-primary">
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...</p>
-        </div>
-        <div class="typography-line">
-          <span>Info Text</span>
-          <p class="text-info">
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-        </div>
-        <div class="typography-line">
-          <span>Success Text</span>
-          <p class="text-success">
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-        </div>
-        <div class="typography-line">
-          <span>Warning Text</span>
-          <p class="text-warning">
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-          </p>
-        </div>
-        <div class="typography-line">
-          <span>Danger Text</span>
-          <p class="text-danger">
-            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-        </div>
-        <div class="typography-line">
-          <h2>
-            <span>Small Tag</span>
-            Header with small subtitle
-            <br>
-            <small>Use "small" tag for the headers</small>
-          </h2>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
- -->
- <div class="card">
+<div class="card">
    <h3>Create Template for Event</h3>
    <div class="card-body">
+     <form [formGroup]="Form">
       <div>
       <label>Title</label>
       <mat-form-field >
-        <input matInput  type='text' name="name" />
+        <input matInput  type='text' name="name"   formControlName="title"/>
         </mat-form-field>
       </div>
+
+      <div>
+        <label>Marketing Creatives</label>
+          <mat-form-field>
+            <div>
+              <mat-toolbar>
+                <input matInput [(ngModel)]="fileAttr" style="visibility:hidden;" readonly name="name" />
+                <button mat-flat-button color="primary">Browse File</button>
+              </mat-toolbar>
+              <input
+                type="file"
+                #fileInput
+                id="uploadFile"
+                (change)="uploadFileEvt($event)"
+                name="uploadFile"
+                multiple="multiple"
+                accept="image/*"
+              />
+            </div>
+          </mat-form-field>
+          </div>
 
     <div>
       <label>Mode</label>
       <mat-form-field >
-        <input matInput  type='text' name="name" />
-
+        <mat-select   formControlName="mode"  >
+          <mat-option value="online">online</mat-option>
+          <mat-option value="offline">offline</mat-option>
+        </mat-select>
       </mat-form-field>
-    </div>
+</div>
 
+<div>
+  <label>Event Goal</label>
+  <mat-form-field >
+    <mat-select   formControlName="event_goal_id">
+      <mat-option *ngFor="let data of event_goal" value="{{data.id}}">{{data.title}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
 
     <div>
       <label>Event Reach</label>
       <mat-form-field >
-        <input matInput  type='text' name="name" />
+        <input matInput  type='number' name="name" formControlName="est_reach" />
 
       </mat-form-field>
     </div>
@@ -125,7 +61,7 @@
     <div>
       <label>Event Budget</label>
       <mat-form-field >
-        <input matInput  type='text' name="name" />
+        <input matInput  type='number' name="name" formControlName="est_budget" />
 
       </mat-form-field>
     </div>
@@ -133,7 +69,7 @@
     <div>
       <label>Event days</label>
       <mat-form-field >
-        <input matInput  type='text' name="name" />
+        <input matInput  type='number' name="name" formControlName="event_days" />
 
       </mat-form-field>
     </div>
@@ -141,11 +77,45 @@
     <div>
       <label>Status</label>
       <mat-form-field >
-        <input matInput  type='text' name="name" />
-
+        <mat-select   formControlName="status"  >
+          <mat-option value=1>active</mat-option>
+          <mat-option value=0>in-active</mat-option>
+        </mat-select>
       </mat-form-field>
     </div>
 
+    <div>
+      <div class="form-group" style="width: 30%;">
+        <label>Success Matrix</label>
+        <ng-multiselect-dropdown  style="height: 200px; width: 200px; background-color: #f7f9fc;
+        border-color: #e4e9f2;
+        color: #222b45; margin-left: 260px;"
+         [placeholder]="'Select Store'"
+          [settings]="dropdownSettings"
+          formControlName="event_metrics"
+          
+         [data]="dropdownList" >
+     </ng-multiselect-dropdown> 
+          </div>
+    </div>
+    <div>
+      <div class="form-group" style="width: 30%;">
+        <label>User Type</label>
+        <ng-multiselect-dropdown  style="height: 200px; width: 200px; background-color: #f7f9fc;
+        border-color: #e4e9f2;
+        color: #222b45; margin-left: 260px;"
+         [placeholder]="'Select Store'"
+          [settings]="dropdownSettings1"
+          formControlName="event_user_types"
+          
+         [data]="dropdownList1" >
+     </ng-multiselect-dropdown> 
+          </div>
+    </div>
+
+    </form>
+    
+    <button mat-raised-button (click)="save()" color="primary" style="margin-left:30px; width:200px">Save Data</button>
 
    </div>
 

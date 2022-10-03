@@ -1,29 +1,27 @@
-.mat-form-field {
-    width: 200px !important;
+
+.card{
+    width: 500px;
+    height: auto;
+    align-items: center;
+    text-transform: uppercase;
+    background-color: white;
 }
-.mat-toolbar-single-row {
-    height: auto !important;
-    background: transparent;
+h2{
+    font-family: "Patrick Hand SC" ;
+
 }
-.mat-toolbar-single-row button {
-    width: 200px;
+h3{
+    border-bottom: double;
+    font-size: 20px;
+
 }
-.mat-form-field {
-    width: 80%;
-}
-#uploadFile {
-    top: 0px;
-    left: 0px;
-    width: 100%;    
-    z-index: 9;
-    opacity: 0;
-    height: 100%;
-    cursor: pointer;
-    position: absolute;
-}
-label{
-    text-decoration: solid;
-    color: #000;
-    font-size: 16px;
-    margin-right: 10px;
-}
+.bshadow {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+    opacity: .5;
+    width: 319px;
+  
+  }

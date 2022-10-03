@@ -5,13 +5,20 @@
       </div>
       <div class="card-body">
         <form [formGroup]="Form">
+
           <div class="row">
-            <div class="col-md-5 pr-1">
-              <div class="form-group">
-                <label>Select Event Goal</label>
-                <input type="text" class="form-control"  placeholder="Company" formControlName="event_goal_id"  value="Creative Code Inc.">
-              </div>
-            </div>
+            <div style="margin-left: 10px;">
+              <label>Success Matrix</label>
+              <ng-multiselect-dropdown  style="height: 200px; width: 200px; background-color: #f7f9fc;
+              border-color: #e4e9f2;
+              color: #222b45; margin-left: 260px;"
+               [placeholder]="'Select Matrix'"
+                [settings]="dropdownSettings1"
+                formControlName="event_metrics"
+               [data]="dropdownList1"
+               (ngModelChange)="changes($event)">
+           </ng-multiselect-dropdown> 
+                </div>
              <div class="col-md-5 pl-1">
               <div class="form-group">
                 <label>Select store</label>
@@ -29,35 +36,20 @@
             <div class="form-group" >
           <div class="col-md-4 pl-1">
             <label for="exampleInputEmail1">Select Success Matrix</label>
-<!--           <input type="email" class="form-control" placeholder="Success Matrix"> -->
-<div class="form-group">
-<select formControlName="event_metrics">
-    <optgroup>
-      <option>#Downloads</option>
-      <option>#Orders</option>
-      <option>#retention</option>
-    </optgroup>
-  </select>
-  </div>
   <div>
     <label for="exampleInputEmail1">Budget</label>
     <mat-slider
     thumbLabel
     (change)="formatLabel($event)"
-    tickInterval="1000"
-    step="1000"
+    tickInterval="100"
+    step="100"
     min="0"
-    max="100000"
+    max="10000"
     aria-label="units"></mat-slider>
   </div>
   
           </div>
           </div>
-  <!--         <div class="row">
-            <div class="update ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
-            </div>
-          </div> -->
         </form>
       </div>
     </div>
@@ -65,7 +57,7 @@
     <div style="display: flex; justify-content:space-between">
     <h3>Select template or create a new template from scratch</h3>
     <div class="update ml-auto mr-auto">
-      <button type="submit" class="btn btn-primary btn-round">Create new Template</button>
+      <button type="submit" class="btn btn-primary btn-round" routerLink="/createTemplate">Create new Template</button>
     </div>
     </div>
 
@@ -79,11 +71,12 @@
             <img src="https://dummyimage.com/230x150/423b42/fff">
    
 
-            <p>{{dat.item_text}}</p>
+            <p>{{dat.est_budget}}</p>
+            <p>{{dat.title}}</p>
             <p>{{dat.value}}</p>
     
         
-                  <button type="submit" (click)="save(dat.item_id)"class="btn btn-primary btn-round">Save</button>
+                  <button type="submit" (click)="save(dat.id)"class="btn btn-primary btn-round">Save</button>
                   </div>
               </div>
           </div>

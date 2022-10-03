@@ -37,6 +37,10 @@ import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatChipsModule} from '@angular/material/chips';
+import { ShareService } from 'app/pages/share.service';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 
 
@@ -46,6 +50,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     CommonModule,
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
+    HttpClientModule,
     ReactiveFormsModule,
     NgbModule,
     MatCardModule,
@@ -63,9 +68,11 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatButtonModule,
     NgxMatTimepickerModule,
     MatIconModule,
+    NgxQRCodeModule,
     DlDateTimeDateModule,  // <--- Determines the data type of the model
     DlDateTimePickerModule,
     NgxMatNativeDateModule,
+    MatChipsModule,
     MatToolbarModule,
     NgxDatetimeRangePickerModule,
     NgMultiSelectDropDownModule.forRoot(),
@@ -79,7 +86,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
-  ]
+  ],
+  providers: [ShareService],
 })
 
 export class AdminLayoutModule {}

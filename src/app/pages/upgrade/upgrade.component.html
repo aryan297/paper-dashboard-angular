@@ -1,70 +1,44 @@
-<div class="card">
-  <div class="card-body">
-    <div class="row">
-      <div class="col-md-6 pr-1">
-        <div class="form-group">
-          <label>Marketing Channels</label>
-          <mat-form-field>
-          <input matInput type="text"  placeholder="Channels" >
-          </mat-form-field>
-        </div>
-      </div>
+
+<div class="btn btn-primary" (click)="convertToPng()">Download Image</div>
+<div style="display:flex; justify-content:center">
+
+  <div   #screen class="card" width:500px>
+    <img src="../../../assets/img/section-logo.png" style="height: 30px; width: 100%;">
+
+    <img src="../../../assets/img/1k-logos.svg" style="width:200px; margin-top:110px">
+
+    <h2>O2O Gate</h2>
+
+    <div style="border: 8px solid;">
+     <!--  <img src="{{EventData.qr_code}}" style="border:5px solid; height:300px;"> -->
+     <ngx-qrcode
+     [elementType]="elementType"
+     [errorCorrectionLevel]="correctionLevel"
+     [width]="319"
+     [value]="value"
+     cssClass="bshadow" style="width: 319px;"></ngx-qrcode>
 
 
-    <div class="col-md-6 pr-1">
-      <label>Marketing Creatives</label>
-        <mat-form-field>
-          <div>
-            <mat-toolbar>
-              <!-- Display files names -->
-              <input matInput [(ngModel)]="fileAttr" style="visibility:hidden;" readonly name="name" />
-              <!-- Browse Button -->
-              <button mat-flat-button color="primary" >Browse File</button>
-            </mat-toolbar>
-            <input
-              type="file"
-              #fileInput
-              id="uploadFile"
-              (change)="uploadFileEvt($event)"
-              name="uploadFile"
-              multiple="multiple"
-              accept="image/*"
-            />
-          </div>
-        </mat-form-field>
-        </div>
     </div>
 
-    <div >
-      <div>
-        <div>
-          <label>Template Id</label>
-          <mat-form-field>
-          <input matInput type="number"  placeholder="Template Id" >
-        </mat-form-field>
-        </div>
-      </div>
-    </div>
     <div>
-      <label>Campaign Start date</label>
-      <mat-form-field>
-        <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date & time" [(ngModel)]="test">
-        
-        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    
-        <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
-    </mat-form-field>
+      <h3>Please Scan The Code</h3>
     </div>
 
+    <div style="margin-top: 30px;">
+      <h4>{{EventData.title}}</h4>
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label>Description</label>
-          <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
-        </div>
-      </div>
     </div>
+
+    <div>
+      <p>Mayur Vihar sector 10,gurgaon</p>
+    </div>
+
   </div>
 
+</div>
+
+<div id="download">
+  <img #canvas>
+  <a #downloadLink></a>
 </div>

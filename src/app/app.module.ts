@@ -22,6 +22,9 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from '@danielmoncada/angul
 import { BrowserModule } from "@angular/platform-browser";
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSelectModule} from '@angular/material/select';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+
 
 
 
@@ -43,11 +46,13 @@ import {MatIconModule} from '@angular/material/icon';
     ToastrModule.forRoot(),
     FooterModule,
     FixedPluginModule,
+    NgxQRCodeModule,
     AgGridModule,
     FormsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MatIconModule,
+    MatSelectModule,
     MatSlideToggleModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

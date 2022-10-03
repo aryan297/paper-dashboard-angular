@@ -1,4 +1,4 @@
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-4">
     <div class="card card-user">
       <div class="image">
@@ -200,3 +200,38 @@
     </div>
   </div>
 </div>
+ -->
+  <h1>Create New User</h1>
+ <div class="form-control">
+   <form [formGroup]="Form">
+     <div class="main">
+
+     <div>
+       <label>Username
+       </label>
+     <mat-form-field>
+       <input matInput type="text" placeholder="username" formControlName="username">
+
+     </mat-form-field>
+    </div>
+    <div>
+      <label>Name</label>
+      <mat-form-field>
+        <input matInput type="text" placeholder="name" formControlName="name">
+
+      </mat-form-field>
+    </div>
+    <div>
+      <label>Email
+      </label>
+      <mat-form-field>
+        <input matInput type="text" placeholder="email" formControlName="email">
+      </mat-form-field>
+    </div>
+
+</div>
+   </form>
+   <button mat-raised-button color="primary" (click)="save()">Save</button>
+
+
+ </div>
